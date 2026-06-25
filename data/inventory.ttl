@@ -1,0 +1,84 @@
+@prefix tdy:  <https://tdytrading.example/parts#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# sellers
+tdy:seller_acme  a tdy:Seller .
+tdy:seller_bytes a tdy:Seller .
+
+# components (each needs an mpn of 2+ chars)
+tdy:cpu_x1     a tdy:CPU     ; tdy:mpn "BX8070811700" .
+tdy:gpu_x1     a tdy:GPU     ; tdy:mpn "GV-N3060" .
+tdy:ram_x1     a tdy:RAM     ; tdy:mpn "CMK16GX4" .
+tdy:storage_x1 a tdy:Storage ; tdy:mpn "MZ-77E1T0" .
+
+
+# clean records
+
+tdy:listing_1 a tdy:Listing ;
+    tdy:sells tdy:cpu_x1 ;
+    tdy:priceUSD "45.00"^^xsd:decimal ;
+    tdy:hasCondition tdy:Used ;
+    tdy:listedBy tdy:seller_acme ;
+    tdy:quantity "3"^^xsd:integer .
+
+tdy:listing_2 a tdy:Listing ;
+    tdy:sells tdy:ram_x1 ;
+    tdy:priceUSD "60.00"^^xsd:decimal ;
+    tdy:hasCondition tdy:New ;
+    tdy:listedBy tdy:seller_bytes .
+
+# valid graded listing
+tdy:listing_3 a tdy:GradedListing ;
+    tdy:sells tdy:gpu_x1 ;
+    tdy:priceUSD "210.00"^^xsd:decimal ;
+    tdy:hasCondition tdy:Refurb ;
+    tdy:listedBy tdy:seller_acme ;
+    tdy:grade "8"^^xsd:integer .
+
+
+# broken records, each breaks one rule
+
+# breaks: priceUSD must be positive
+tdy:bad_1 a tdy:Listing ;
+    tdy:sells tdy:storage_x1 ;
+    tdy:priceUSD "-5.00"^^xsd:decimal ;
+    tdy:hasCondition tdy:Used ;
+    tdy:listedBy tdy:seller_bytes .
+
+# breaks: hasCondition not in the allowed sh:in set
+tdy:bad_2 a tdy:Listing ;
+    tdy:sells tdy:cpu_x1 ;
+    tdy:priceUSD "30.00"^^xsd:decimal ;
+    tdy:hasCondition tdy:LikeNew ;
+    tdy:listedBy tdy:seller_acme .
+
+# breaks: missing both sells and listedBy
+tdy:bad_3 a tdy:Listing ;
+    tdy:priceUSD "15.00"^^xsd:decimal ;
+    tdy:hasCondition tdy:Used .
+
+# breaks: grade out of 1..10 range
+tdy:bad_4 a tdy:GradedListing ;
+    tdy:sells tdy:gpu_x1 ;
+    tdy:priceUSD "150.00"^^xsd:decimal ;
+    tdy:hasCondition tdy:Refurb ;
+    tdy:listedBy tdy:seller_bytes ;
+    tdy:grade "12"^^xsd:integer .
+
+# breaks: graded listing must not be sold ForParts
+tdy:bad_5 a tdy:GradedListing ;
+    tdy:sells tdy:ram_x1 ;
+    tdy:priceUSD "20.00"^^xsd:decimal ;
+    tdy:hasCondition tdy:ForParts ;
+    tdy:listedBy tdy:seller_acme ;
+    tdy:grade "5"^^xsd:integer .
+
+# breaks: component has no mpn
+tdy:bad_component a tdy:CPU .
+
+tdy:bad_6 a tdy:Listing ;
+    tdy:sells tdy:bad_component ;
+    tdy:priceUSD "25.00"^^xsd:decimal ;
+    tdy:hasCondition tdy:Used ;
+    tdy:listedBy tdy:seller_bytes .

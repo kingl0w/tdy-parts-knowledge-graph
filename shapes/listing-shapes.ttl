@@ -1,0 +1,64 @@
+@prefix tdy:  <https://tdytrading.example/parts#> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+tdy:ListingShape a sh:NodeShape ;
+    sh:targetClass tdy:Listing ;
+
+    sh:property [
+        sh:path tdy:sells ;
+        sh:class tdy:Component ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+
+    sh:property [
+        sh:path tdy:priceUSD ;
+        sh:datatype xsd:decimal ;
+        sh:minExclusive 0 ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+
+    sh:property [
+        sh:path tdy:hasCondition ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:in ( tdy:New tdy:Used tdy:Refurb tdy:ForParts ) ;
+    ] ;
+
+    sh:property [
+        sh:path tdy:listedBy ;
+        sh:class tdy:Seller ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+
+    sh:property [
+        sh:path tdy:quantity ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 0 ;
+        sh:maxCount 1 ;
+    ] .
+
+tdy:GradedListingShape a sh:NodeShape ;
+    sh:targetClass tdy:GradedListing ;
+
+    sh:property [
+        sh:path tdy:grade ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1 ; sh:maxInclusive 10 ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] ;
+
+    # graded stock is never sold for parts
+    sh:property [
+        sh:path tdy:hasCondition ;
+        sh:not [ sh:hasValue tdy:ForParts ] ;
+    ] .
+
+tdy:ComponentShape a sh:NodeShape ;
+    sh:targetClass tdy:Component ;
+
+    sh:property [
+        sh:path tdy:mpn ;
+        sh:datatype xsd:string ;
+        sh:minLength 2 ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+    ] .

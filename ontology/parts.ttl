@@ -1,0 +1,44 @@
+@prefix tdy:  <https://tdytrading.example/parts#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+tdy:Component a owl:Class .
+tdy:CPU     a owl:Class ; rdfs:subClassOf tdy:Component .
+tdy:GPU     a owl:Class ; rdfs:subClassOf tdy:Component .
+tdy:RAM     a owl:Class ; rdfs:subClassOf tdy:Component .
+tdy:Storage a owl:Class ; rdfs:subClassOf tdy:Component .
+
+tdy:Listing       a owl:Class .
+tdy:GradedListing a owl:Class ; rdfs:subClassOf tdy:Listing .
+
+tdy:Seller    a owl:Class .
+tdy:Condition a owl:Class .
+
+# controlled vocabulary, the only four allowed conditions
+tdy:New      a tdy:Condition .
+tdy:Used     a tdy:Condition .
+tdy:Refurb   a tdy:Condition .
+tdy:ForParts a tdy:Condition .
+
+tdy:sells a owl:ObjectProperty ;
+    rdfs:domain tdy:Listing ; rdfs:range tdy:Component .
+
+tdy:hasCondition a owl:ObjectProperty ;
+    rdfs:domain tdy:Listing ; rdfs:range tdy:Condition .
+
+tdy:listedBy a owl:ObjectProperty ;
+    rdfs:domain tdy:Listing ; rdfs:range tdy:Seller .
+
+tdy:priceUSD a owl:DatatypeProperty ;
+    rdfs:domain tdy:Listing ; rdfs:range xsd:decimal .
+
+tdy:quantity a owl:DatatypeProperty ;
+    rdfs:domain tdy:Listing ; rdfs:range xsd:integer .
+
+tdy:grade a owl:DatatypeProperty ;
+    rdfs:domain tdy:GradedListing ; rdfs:range xsd:integer .
+
+tdy:mpn a owl:DatatypeProperty ;
+    rdfs:domain tdy:Component ; rdfs:range xsd:string .
