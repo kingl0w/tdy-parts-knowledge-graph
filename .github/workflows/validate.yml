@@ -1,6 +1,8 @@
-name: validate
+name: validate-graph
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
 
 jobs:
   validate:
@@ -10,6 +12,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -r requirements.txt
-      - run: python src/validate.py
-      - run: pytest -q
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run test suite (CI gate)
+        run: pytest -q
