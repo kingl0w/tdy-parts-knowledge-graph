@@ -1,0 +1,2 @@
+PREFIX tdy: <https://tdytrading.example/parts#>
+CONSTRUCT { ?b tdy:fitsWith ?a } WHERE { ?a tdy:fitsWith ?b }

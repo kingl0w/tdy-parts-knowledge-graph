@@ -1,8 +1,12 @@
 @prefix tdy: <https://tdytrading.example/parts#> .
 
 tdy:board_b560  tdy:fitsWith  tdy:case_atx .
+tdy:board_b560  tdy:fitsWith  tdy:ram_ddr4 , tdy:cpu_i7 , tdy:ssd_m2 .
 tdy:board_b650  tdy:fitsWith  tdy:case_matx , tdy:case_atx .
+tdy:board_b650  tdy:fitsWith  tdy:ram_ddr5 , tdy:cpu_r7 , tdy:ssd_m2 .
 tdy:build_1  tdy:powerOk  true .
+tdy:case_atx  tdy:fitsWith  tdy:gpu_big , tdy:board_b650 , tdy:gpu_mid , tdy:gpu_small , tdy:board_b560 .
+tdy:case_matx  tdy:fitsWith  tdy:board_b650 , tdy:gpu_small .
 tdy:cpu_i7  tdy:fitsWith  tdy:board_b560 .
 tdy:cpu_r7  tdy:fitsWith  tdy:board_b650 .
 tdy:gpu_big  tdy:fitsWith  tdy:case_atx .
@@ -11,6 +15,8 @@ tdy:gpu_mid  tdy:fitsWith  tdy:case_atx .
 tdy:gpu_mid  tdy:fitsWith  tdy:psu_750 , tdy:psu_1000 .
 tdy:gpu_small  tdy:fitsWith  tdy:case_matx , tdy:case_atx .
 tdy:gpu_small  tdy:fitsWith  tdy:psu_750 , tdy:psu_1000 .
+tdy:psu_1000  tdy:fitsWith  tdy:gpu_big , tdy:gpu_mid , tdy:gpu_small .
+tdy:psu_750  tdy:fitsWith  tdy:gpu_mid , tdy:gpu_small .
 tdy:ram_ddr4  tdy:fitsWith  tdy:board_b560 .
 tdy:ram_ddr5  tdy:fitsWith  tdy:board_b650 .
 tdy:ssd_m2  tdy:fitsWith  tdy:board_b650 , tdy:board_b560 .

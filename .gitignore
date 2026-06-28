@@ -9,3 +9,4 @@ venv/
 jena/reasoner/target/
 jena/reasoner/merged.ttl
 jena/reasoner/dependency-reduced-pom.xml
+.env
