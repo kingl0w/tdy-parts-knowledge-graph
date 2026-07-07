@@ -66,7 +66,7 @@
   #stats b { color: var(--muted); font-weight: 500; }
   #wheel { width: 100%; aspect-ratio: 1; display: block; }
   @media (prefers-reduced-motion: no-preference) {
-    #wheel .spin { animation: spin 90s linear infinite; transform-origin: center; }
+    #wheel .spin { animation: spin 90s linear infinite; transform-box: fill-box; transform-origin: center; }
     @keyframes spin { to { transform: rotate(360deg); } }
   }
 
