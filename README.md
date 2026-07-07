@@ -2,6 +2,8 @@
 
 A knowledge graph for a used computer parts inventory. It answers questions about facts nobody typed in: assert that a motherboard fits a CPU, and the graph derives that the CPU fits the motherboard, that a listing selling that CPU offers something motherboard-compatible, and which parts form a working build with enough power. Those facts are computed, not stored.
 
+**Live demo:** [project page](https://kingl0w.github.io/tdy-parts-knowledge-graph/) · [radial build explorer](https://kingl0w.github.io/tdy-parts-knowledge-graph/viz/explorer.html) · [force graph](https://kingl0w.github.io/tdy-parts-knowledge-graph/viz/index.html)
+
 It is built over one ontology with deliberately different tools for different jobs: OWL/HermiT reasoning for the listing world, SPARQL rules for build compatibility, a Python pipeline for data intake, and a local LLM for natural-language queries. The whole serving stack stands up in one `docker compose up`.
 
 ## What it demonstrates
