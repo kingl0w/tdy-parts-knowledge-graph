@@ -23,6 +23,7 @@
   endpoint:
   <input id="endpoint" value="http://localhost:3030/tdyparts/sparql">
   <button onclick="load()">reload</button>
+  <a href="explorer.html" style="color:#81a1c1;margin-left:14px;text-decoration:none">&#9678; explorer view</a>
 </div>
 <div id="legend"></div>
 <div id="status"></div>
@@ -61,7 +62,7 @@ async function load() {
   const ep = document.getElementById("endpoint").value;
   const status = document.getElementById("status");
   status.textContent = "querying...";
-  let json;
+  let json, note = "";
   try {
     const res = await fetch(ep, {
       method: "POST",
@@ -71,10 +72,17 @@ async function load() {
     if (!res.ok) throw new Error("HTTP " + res.status);
     json = await res.json();
   } catch (e) {
-    status.textContent = "error: " + e.message + " (is the container running? docker compose up -d)";
-    return;
+    try {
+      const res = await fetch("data.json");
+      if (!res.ok) throw new Error();
+      json = await res.json();
+      note = "live endpoint unreachable — showing snapshot data";
+    } catch {
+      status.textContent = "error: " + e.message + " (is the container running? docker compose up -d)";
+      return;
+    }
   }
-  status.textContent = "";
+  status.textContent = note;
 
   const typeMap = {};
   json.results.bindings.forEach(b => {

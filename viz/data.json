@@ -1,0 +1,596 @@
+{ "head": {
+    "vars": [ "s" , "sType" , "p" , "o" , "oType" ]
+  } ,
+  "results": {
+    "bindings": [
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#CPU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#MotherboardCompatible" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "oType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#CPU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#MotherboardCompatible" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "oType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#CPU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#MotherboardCompatible" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "oType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#RAM" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#MotherboardCompatible" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "oType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#RAM" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#MotherboardCompatible" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "oType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#RAM" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#MotherboardCompatible" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "sType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "oType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#CPU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#CPU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#CPU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#MotherboardCompatible" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#MotherboardCompatible" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#MotherboardCompatible" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "sType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "sType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_x1" } ,
+        "sType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#RAM" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#RAM" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#RAM" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#MotherboardCompatible" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#MotherboardCompatible" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#MotherboardCompatible" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "sType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Component" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "sType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_x1" } ,
+        "sType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#compatibleWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#mobo_x1" } ,
+        "oType": { "type": "uri" , "value": "http://www.w3.org/2002/07/owl#NamedIndividual" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#case_atx" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Case" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b560" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_i7" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#CPU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b560" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_ddr4" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#RAM" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b560" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ssd_m2" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Storage" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b560" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b560" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#case_atx" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Case" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_mid" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#case_atx" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Case" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b650" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#case_atx" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Case" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_big" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#case_atx" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Case" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_small" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#case_atx" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Case" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b560" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_i7" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#CPU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#case_atx" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Case" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_mid" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#psu_750" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#PSU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_mid" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#psu_1000" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#PSU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_mid" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_mid" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#psu_750" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#PSU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_small" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#psu_750" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#PSU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b560" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_ddr4" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#RAM" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b560" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ssd_m2" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Storage" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b650" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ssd_m2" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Storage" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#case_atx" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Case" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b650" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ssd_m2" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Storage" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b650" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_r7" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#CPU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b650" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_ddr5" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#RAM" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b650" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#case_matx" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Case" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b650" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b650" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#cpu_r7" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#CPU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#case_atx" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Case" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_big" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#psu_1000" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#PSU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_big" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b650" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#ram_ddr5" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#RAM" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#board_b650" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Motherboard" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#case_matx" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Case" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_small" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#case_matx" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#Case" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#case_atx" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Case" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_small" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#psu_750" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#PSU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_small" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#case_matx" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#Case" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_small" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#psu_1000" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#PSU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_small" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_mid" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#psu_1000" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#PSU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_big" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#psu_1000" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#PSU" }
+      } ,
+      { 
+        "s": { "type": "uri" , "value": "https://tdytrading.example/parts#gpu_small" } ,
+        "sType": { "type": "uri" , "value": "https://tdytrading.example/parts#GPU" } ,
+        "p": { "type": "uri" , "value": "https://tdytrading.example/parts#fitsWith" } ,
+        "o": { "type": "uri" , "value": "https://tdytrading.example/parts#psu_1000" } ,
+        "oType": { "type": "uri" , "value": "https://tdytrading.example/parts#PSU" }
+      }
+    ]
+  }
+}

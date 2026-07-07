@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>tdy-parts explorer</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+  body { margin: 0; font: 13px system-ui, sans-serif; background: #0f1115; color: #e6e6e6; }
+  #bar { padding: 10px 14px; background: #161a21; border-bottom: 1px solid #262b34; }
+  #bar input { width: 320px; padding: 4px 6px; background: #0f1115; color: #e6e6e6; border: 1px solid #333; border-radius: 4px; }
+  #bar button { padding: 4px 10px; margin-left: 6px; background: #2a3340; color: #e6e6e6; border: 1px solid #3a4757; border-radius: 4px; cursor: pointer; }
+  #bar a { color: #81a1c1; margin-left: 14px; text-decoration: none; }
+  #legend { padding: 6px 14px; font-size: 12px; color: #9aa4b2; }
+  #legend span { margin-right: 16px; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+  .edge-c { display: inline-block; width: 16px; height: 0; border-top: 2px solid; margin-right: 4px; vertical-align: middle; }
+  #status { padding: 6px 14px; color: #d08770; font-size: 12px; min-height: 14px; }
+  #main { display: flex; }
+  svg { flex: 1; height: calc(100vh - 92px); display: block; }
+  #tray { width: 260px; padding: 12px; border-left: 1px solid #262b34; background: #12151b; overflow-y: auto; }
+  #tray h3 { margin: 0 0 8px; font-size: 13px; color: #cdd3db; }
+  #tray .slot { margin: 4px 0; font-size: 12px; }
+  #tray .slot b { color: #9aa4b2; font-weight: 600; }
+  #tray .empty { color: #4b5563; }
+  #tray .check { margin: 3px 0; font-size: 12px; }
+  #tray .ok { color: #a3be8c; }
+  #tray .bad { color: #bf616a; }
+  #tray button { margin-top: 10px; padding: 4px 10px; background: #2a3340; color: #e6e6e6; border: 1px solid #3a4757; border-radius: 4px; cursor: pointer; }
+  #tip { position: fixed; pointer-events: none; background: #1c212b; border: 1px solid #3a4757; border-radius: 6px;
+         padding: 8px 10px; font-size: 12px; max-width: 280px; display: none; z-index: 10; }
+  #tip b { color: #e6e6e6; }
+  .node { cursor: pointer; }
+  .node text { fill: #cdd3db; font-size: 11px; }
+  .cat-label { fill: #9aa4b2; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div id="bar">
+  endpoint:
+  <input id="endpoint" value="http://localhost:3030/tdyparts/sparql">
+  <button onclick="load()">reload</button>
+  <a href="index.html">&#9889; force view</a>
+</div>
+<div id="legend"></div>
+<div id="status"></div>
+<div id="main">
+  <svg></svg>
+  <div id="tray"></div>
+</div>
+<div id="tip"></div>
+
+<script>
+const TDY = "https://tdytrading.example/parts#";
+const short = u => u.replace(TDY, "");
+
+const TYPE_COLORS = {
+  CPU: "#88c0d0", GPU: "#a3be8c", RAM: "#ebcb8b", Storage: "#d08770",
+  Motherboard: "#b48ead", PSU: "#bf616a", Case: "#5e81ac",
+  Listing: "#81a1c1", GradedListing: "#81a1c1", Build: "#e5e9f0", Other: "#6b7280"
+};
+const EDGE_COLORS = { compatibleWith: "#a3be8c", fitsWith: "#ebcb8b" };
+const CAT_ORDER = ["CPU", "Motherboard", "RAM", "GPU", "Storage", "PSU", "Case", "Build", "Listing", "GradedListing", "Other"];
+
+// why a fitsWith edge exists, by category pair — mirrors rules/*.rq
+const RULES = {
+  "CPU|Motherboard": "socket match",
+  "Motherboard|RAM": "RAM generation match",
+  "Motherboard|Storage": "interface match",
+  "Case|Motherboard": "form factor fits",
+  "Case|GPU": "GPU length fits",
+  "GPU|PSU": "PSU wattage sufficient"
+};
+const catKey = (a, b) => a < b ? a + "|" + b : b + "|" + a;
+const pairKey = (a, b) => a < b ? a + "|" + b : b + "|" + a;
+
+const QUERY = `
+PREFIX tdy: <${TDY}>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?s ?sType ?p ?o ?oType WHERE {
+  { ?s tdy:compatibleWith ?o . BIND(tdy:compatibleWith AS ?p) }
+  UNION
+  { ?s tdy:fitsWith ?o . BIND(tdy:fitsWith AS ?p) }
+  OPTIONAL { ?s rdf:type ?sType }
+  OPTIONAL { ?o rdf:type ?oType }
+}`;
+
+function typeOf(uri, map) {
+  const t = map[uri];
+  if (!t) return "Other";
+  const s = short(t);
+  return TYPE_COLORS[s] ? s : "Other";
+}
+
+function why(rel, typeA, typeB) {
+  if (rel === "compatibleWith") return "asserted / OWL-inferred";
+  return RULES[catKey(typeA, typeB)] || "rule-inferred";
+}
+
+let nodes = [], edges = [], edgeMap = new Map(), adj = new Map();
+const selected = new Set();
+
+async function load() {
+  const ep = document.getElementById("endpoint").value;
+  const status = document.getElementById("status");
+  status.textContent = "querying...";
+  let json, note = "";
+  try {
+    const res = await fetch(ep, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded", "Accept": "application/sparql-results+json" },
+      body: "query=" + encodeURIComponent(QUERY)
+    });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    json = await res.json();
+  } catch (e) {
+    try {
+      const res = await fetch("data.json");
+      if (!res.ok) throw new Error();
+      json = await res.json();
+      note = "live endpoint unreachable — showing snapshot data";
+    } catch {
+      status.textContent = "error: " + e.message + " (is the container running? docker compose up -d)";
+      return;
+    }
+  }
+  status.textContent = note;
+
+  const typeMap = {};
+  json.results.bindings.forEach(b => {
+    if (b.sType) typeMap[b.s.value] = b.sType.value;
+    if (b.oType) typeMap[b.o.value] = b.oType.value;
+  });
+
+  const nodeSet = new Map();
+  edgeMap = new Map(); // "a|b" (unordered) -> rel; dedupes the symmetric fitsWith pairs
+  json.results.bindings.forEach(b => {
+    const s = b.s.value, o = b.o.value, p = short(b.p.value);
+    [s, o].forEach(u => { if (!nodeSet.has(u)) nodeSet.set(u, { id: u, type: typeOf(u, typeMap) }); });
+    const k = pairKey(s, o);
+    if (!edgeMap.has(k)) edgeMap.set(k, p);
+  });
+
+  nodes = [...nodeSet.values()].sort((a, b) =>
+    CAT_ORDER.indexOf(a.type) - CAT_ORDER.indexOf(b.type) || short(a.id).localeCompare(short(b.id)));
+  edges = [...edgeMap].map(([k, rel]) => {
+    const [a, b] = k.split("|");
+    return { a: nodeSet.get(a), b: nodeSet.get(b), rel };
+  });
+
+  adj = new Map(nodes.map(n => [n.id, []]));
+  edges.forEach(e => { adj.get(e.a.id).push(e); adj.get(e.b.id).push(e); });
+
+  selected.clear();
+  drawLegend();
+  draw();
+  renderTray();
+}
+
+function drawLegend() {
+  const types = [...new Set(nodes.map(n => n.type))];
+  const nodeL = types.map(t => `<span><i class="dot" style="background:${TYPE_COLORS[t]}"></i>${t}</span>`).join("");
+  const edgeL = Object.entries(EDGE_COLORS).map(([k, v]) => `<span><i class="edge-c" style="border-color:${v}"></i>${k}</span>`).join("");
+  document.getElementById("legend").innerHTML = nodeL + "<br>" + edgeL +
+    ' <span style="color:#6b7280">&nbsp;hover a part to see what fits &middot; click parts to build</span>';
+}
+
+function draw() {
+  const svg = d3.select("svg");
+  svg.selectAll("*").remove();
+  const w = svg.node().clientWidth, h = svg.node().clientHeight;
+  const R = Math.min(w, h) / 2 - 90;
+  const outer = svg.append("g");
+  const root = outer.append("g").attr("transform", `translate(${w / 2},${h / 2})`);
+  svg.call(d3.zoom().scaleExtent([0.4, 5]).on("zoom", e => outer.attr("transform", e.transform)));
+
+  // radial positions: even slots around the circle, one extra gap slot between categories
+  const cats = [...new Set(nodes.map(n => n.type))];
+  const GAP = 1.5;
+  const total = nodes.length + cats.length * GAP;
+  const unit = 2 * Math.PI / total;
+  let slot = 0, prev = null;
+  nodes.forEach(n => {
+    if (prev !== null && n.type !== prev) slot += GAP;
+    n.angle = slot * unit - Math.PI / 2;
+    n.x = R * Math.cos(n.angle);
+    n.y = R * Math.sin(n.angle);
+    slot++; prev = n.type;
+  });
+
+  // category arc bands just inside the ring
+  const arcs = cats.map(c => {
+    const ns = nodes.filter(n => n.type === c);
+    return { cat: c, a0: ns[0].angle - unit * 0.4, a1: ns[ns.length - 1].angle + unit * 0.4 };
+  });
+  const arcGen = d3.arc().innerRadius(R - 22).outerRadius(R - 14)
+    .startAngle(d => d.a0 + Math.PI / 2).endAngle(d => d.a1 + Math.PI / 2);
+  root.append("g").selectAll("path").data(arcs).join("path")
+    .attr("d", arcGen).attr("fill", d => TYPE_COLORS[d.cat]).attr("opacity", 0.35);
+  root.append("g").selectAll("text").data(arcs).join("text")
+    .attr("class", "cat-label")
+    .attr("transform", d => {
+      const mid = (d.a0 + d.a1) / 2, deg = mid * 180 / Math.PI;
+      const flip = mid > Math.PI / 2 || mid < -Math.PI / 2;
+      return `rotate(${deg}) translate(${R - 34},0) rotate(${flip ? 180 : 0})`;
+    })
+    .attr("text-anchor", "middle").attr("dy", 4)
+    .text(d => d.cat);
+
+  // edges: quadratic beziers pulled toward the center for a bundled, chord-like look
+  const edgeSel = root.append("g").selectAll("path").data(edges).join("path")
+    .attr("d", d => {
+      const mx = (d.a.x + d.b.x) / 2 * 0.35, my = (d.a.y + d.b.y) / 2 * 0.35;
+      return `M${d.a.x},${d.a.y} Q${mx},${my} ${d.b.x},${d.b.y}`;
+    })
+    .attr("fill", "none")
+    .attr("stroke", d => EDGE_COLORS[d.rel] || "#555")
+    .attr("stroke-width", 1.5)
+    .attr("opacity", 0.35);
+
+  const nodeSel = root.append("g").selectAll("g").data(nodes).join("g")
+    .attr("class", "node")
+    .attr("transform", d => `translate(${d.x},${d.y})`);
+  nodeSel.append("circle").attr("r", 7)
+    .attr("fill", d => TYPE_COLORS[d.type] || TYPE_COLORS.Other)
+    .attr("stroke", "#0f1115").attr("stroke-width", 1.5);
+  nodeSel.append("text")
+    .attr("transform", d => {
+      const deg = d.angle * 180 / Math.PI;
+      const flip = Math.abs(deg) > 90;
+      return `rotate(${flip ? deg + 180 : deg}) translate(${flip ? -12 : 12},0)`;
+    })
+    .attr("text-anchor", d => Math.abs(d.angle * 180 / Math.PI) > 90 ? "end" : "start")
+    .attr("dy", 4)
+    .text(d => short(d.id));
+
+  const tip = document.getElementById("tip");
+
+  function refresh(hovered) {
+    const focus = new Set(selected);
+    if (hovered) focus.add(hovered.id);
+    if (!focus.size) {
+      edgeSel.attr("opacity", 0.35).attr("stroke-width", 1.5);
+      nodeSel.attr("opacity", 1);
+      nodeSel.select("circle").attr("stroke", "#0f1115").attr("stroke-width", 1.5);
+      return;
+    }
+    const lit = new Set(focus);
+    edges.forEach(e => {
+      if (focus.has(e.a.id) || focus.has(e.b.id)) { lit.add(e.a.id); lit.add(e.b.id); }
+    });
+    edgeSel
+      .attr("opacity", e => focus.has(e.a.id) || focus.has(e.b.id) ? 0.9 : 0.06)
+      .attr("stroke-width", e => focus.has(e.a.id) || focus.has(e.b.id) ? 2.5 : 1.5);
+    nodeSel.attr("opacity", n => lit.has(n.id) ? 1 : 0.15);
+    nodeSel.select("circle")
+      .attr("stroke", n => selected.has(n.id) ? "#e6e6e6" : "#0f1115")
+      .attr("stroke-width", n => selected.has(n.id) ? 3 : 1.5);
+  }
+  window.refreshView = refresh; // tray clear button reuses it
+
+  nodeSel
+    .on("mouseover", (ev, d) => {
+      refresh(d);
+      const items = adj.get(d.id).map(e => {
+        const other = e.a.id === d.id ? e.b : e.a;
+        return `<div><i class="dot" style="background:${TYPE_COLORS[other.type]}"></i>${short(other.id)} <span style="color:#6b7280">— ${why(e.rel, d.type, other.type)}</span></div>`;
+      }).join("") || '<div style="color:#6b7280">no compatibility edges</div>';
+      tip.innerHTML = `<b>${short(d.id)}</b> <span style="color:#6b7280">(${d.type})</span>${items}`;
+      tip.style.display = "block";
+    })
+    .on("mousemove", ev => {
+      tip.style.left = Math.min(ev.clientX + 14, window.innerWidth - 300) + "px";
+      tip.style.top = (ev.clientY + 14) + "px";
+    })
+    .on("mouseout", () => { tip.style.display = "none"; refresh(null); })
+    .on("click", (ev, d) => {
+      selected.has(d.id) ? selected.delete(d.id) : selected.add(d.id);
+      refresh(d);
+      renderTray();
+    });
+
+  refresh(null);
+}
+
+function renderTray() {
+  const tray = document.getElementById("tray");
+  const sel = nodes.filter(n => selected.has(n.id));
+  const coreCats = CAT_ORDER.filter(c => nodes.some(n => n.type === c) && !["Listing", "GradedListing", "Other"].includes(c));
+
+  const slots = coreCats.map(c => {
+    const parts = sel.filter(n => n.type === c).map(n => short(n.id)).join(", ");
+    return `<div class="slot"><b>${c}:</b> ${parts || '<span class="empty">— empty</span>'}</div>`;
+  }).join("");
+
+  const checks = [];
+  for (let i = 0; i < sel.length; i++) for (let j = i + 1; j < sel.length; j++) {
+    const a = sel[i], b = sel[j];
+    const rel = edgeMap.get(pairKey(a.id, b.id));
+    const rule = RULES[catKey(a.type, b.type)];
+    if (rel) checks.push(`<div class="check ok">&#10003; ${short(a.id)} + ${short(b.id)} <span style="color:#6b7280">(${why(rel, a.type, b.type)})</span></div>`);
+    else if (rule) checks.push(`<div class="check bad">&#10007; ${short(a.id)} + ${short(b.id)} <span style="color:#6b7280">(${rule} fails)</span></div>`);
+  }
+
+  tray.innerHTML = `<h3>Build tray</h3>${slots}` +
+    (checks.length ? `<h3 style="margin-top:14px">Fit checks</h3>${checks.join("")}` : "") +
+    (sel.length ? `<button onclick="clearBuild()">clear build</button>`
+                : '<div class="empty" style="margin-top:10px">click parts on the wheel to add them</div>');
+}
+
+function clearBuild() {
+  selected.clear();
+  renderTray();
+  if (window.refreshView) window.refreshView(null);
+}
+
+load();
+</script>
+</body>
+</html>
