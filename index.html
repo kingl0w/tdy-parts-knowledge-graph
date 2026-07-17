@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>tdy-parts-graph — a knowledge graph for used PC parts</title>
+<title>tdy-parts-graph: a knowledge graph for used PC parts</title>
 <meta name="description" content="A knowledge graph that computes PC part compatibility nobody typed in: OWL reasoning + SPARQL rules over one ontology, with interactive D3 visualizations.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -147,7 +147,7 @@
       <h1>Compatibility <span>nobody typed in.</span></h1>
       <p class="lede">A knowledge graph for a used PC-parts inventory. Assert that a motherboard
       fits a CPU, and the graph derives the reverse, which listings offer compatible parts, and
-      which builds have enough power — computed by two reasoning paradigms over one ontology,
+      which builds have enough power, all computed by two reasoning paradigms over one ontology,
       not stored.</p>
       <div class="cta">
         <a class="btn btn-primary" href="viz/explorer.html">Explore the graph</a>
@@ -161,14 +161,14 @@
 
 <section>
   <div class="wrap">
-    <p class="kicker">01 — Two reasoning paradigms</p>
-    <h2>One graph, two kinds of inference — kept distinguishable by predicate.</h2>
+    <p class="kicker">01 · Two reasoning paradigms</p>
+    <h2>One graph, two kinds of inference, kept distinguishable by predicate.</h2>
     <p class="section-intro">Each edge color in the visualizations tells you which engine derived it.
     The tools were chosen for fit: OWL where class semantics and property chains shine,
     SPARQL rules where value-matching does.</p>
     <div class="paradigms">
       <div class="paradigm">
-        <div class="edge-key"><i class="edge-swatch" style="border-color:var(--compat)"></i><h3><code>compatibleWith</code> — OWL, reasoned by HermiT</h3></div>
+        <div class="edge-key"><i class="edge-swatch" style="border-color:var(--compat)"></i><h3><code>compatibleWith</code>: OWL, reasoned by HermiT</h3></div>
         <p>Assert one direction of compatibility and the reasoner composes the rest:
         a symmetric property plus the chain <code>sells ∘ compatibleWith</code> makes
         <code>offersCompatible</code> listings appear that nobody linked by hand.
@@ -181,10 +181,10 @@ tdy:cpu_x1 <span class="g">tdy:compatibleWith</span> tdy:mobo_x1 .
 tdy:listing_7 tdy:offersCompatible tdy:mobo_x1 .</pre>
       </div>
       <div class="paradigm">
-        <div class="edge-key"><i class="edge-swatch" style="border-color:var(--fits)"></i><h3><code>fitsWith</code> — SPARQL CONSTRUCT rules</h3></div>
-        <p>Physical and electrical fit, derived from part attributes across three rule patterns —
+        <div class="edge-key"><i class="edge-swatch" style="border-color:var(--fits)"></i><h3><code>fitsWith</code>: SPARQL CONSTRUCT rules</h3></div>
+        <p>Physical and electrical fit, derived from part attributes across three rule patterns:
         equality (socket, RAM generation, interface), set-containment (form factor, GPU clearance),
-        numeric threshold (PSU wattage) — plus whole-build power aggregation.</p>
+        and numeric threshold (PSU wattage), plus whole-build power aggregation.</p>
 <pre><span class="c"># rules/01-socket.rq</span>
 CONSTRUCT { ?cpu <span class="y">tdy:fitsWith</span> ?board }
 WHERE {
@@ -198,14 +198,14 @@ WHERE {
 
 <section>
   <div class="wrap">
-    <p class="kicker">02 — Pipeline</p>
+    <p class="kicker">02 · Pipeline</p>
     <h2>From CSV to a served, reasoning-backed endpoint in one command.</h2>
     <div class="pipeline">
       <div class="step"><span class="n mono">01</span><b>CSV intake</b><small>8 part sheets, validated before anything is generated</small></div>
-      <div class="step"><span class="n mono">02</span><b>RDF mapping</b><small>Python + rdflib emit catalog.ttl — no hand-written triples</small></div>
+      <div class="step"><span class="n mono">02</span><b>RDF mapping</b><small>Python + rdflib emit catalog.ttl, no hand-written triples</small></div>
       <div class="step"><span class="n mono">03</span><b>Inference</b><small>7 SPARQL rules + HermiT OWL reasoning, materialized offline</small></div>
       <div class="step"><span class="n mono">04</span><b>SHACL</b><small>Shapes validated through two engines off one file</small></div>
-      <div class="step"><span class="n mono">05</span><b>Serve</b><small>Fuseki + TDB2 in Docker — <code>docker compose up</code></small></div>
+      <div class="step"><span class="n mono">05</span><b>Serve</b><small>Fuseki + TDB2 in Docker via <code>docker compose up</code></small></div>
       <div class="step"><span class="n mono">06</span><b>Query</b><small>SPARQL endpoint, local-LLM natural language, these visualizations</small></div>
     </div>
   </div>
@@ -213,23 +213,23 @@ WHERE {
 
 <section>
   <div class="wrap">
-    <p class="kicker">03 — What it demonstrates</p>
+    <p class="kicker">03 · What it demonstrates</p>
     <h2>Each tool chosen for fit, not name.</h2>
     <ul class="demos">
-      <li><b>OWL 2 modeling</b> — a defined class and a property chain, classified offline with HermiT</li>
-      <li><b>SPARQL CONSTRUCT rules</b> — three derivation patterns plus whole-build power aggregation</li>
+      <li><b>OWL 2 modeling</b>: a defined class and a property chain, classified offline with HermiT</li>
+      <li><b>SPARQL CONSTRUCT rules</b>: three derivation patterns plus whole-build power aggregation</li>
       <li><b>Two inference paradigms in one served graph</b>, distinguishable by predicate</li>
-      <li><b>Tested CSV intake pipeline</b> — validate, then map; replaces hand-written RDF</li>
-      <li><b>SHACL validation</b> — one shapes file, two engines</li>
-      <li><b>Provider-agnostic local-LLM layer</b> — English to SPARQL against the live endpoint</li>
-      <li><b>Deployable artifact</b> — persistent triplestore, containerized, one command</li>
+      <li><b>Tested CSV intake pipeline</b>: validate, then map; replaces hand-written RDF</li>
+      <li><b>SHACL validation</b>: one shapes file, two engines</li>
+      <li><b>Provider-agnostic local-LLM layer</b>: English to SPARQL against the live endpoint</li>
+      <li><b>Deployable artifact</b>: persistent triplestore, containerized, one command</li>
     </ul>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <p class="kicker">04 — Explore</p>
+    <p class="kicker">04 · Explore</p>
     <h2>Two interactive views of the same graph.</h2>
     <div class="views">
       <div class="view">
@@ -239,7 +239,7 @@ WHERE {
       </div>
       <div class="view">
         <h3><a href="viz/index.html">Force-directed graph →</a></h3>
-        <p>The classic physics view — drag nodes, watch the compatibility clusters
+        <p>The classic physics view. Drag nodes and watch the compatibility clusters
         pull themselves together. Edge colors distinguish OWL-reasoned from rule-derived.</p>
       </div>
     </div>
@@ -248,8 +248,8 @@ WHERE {
 
 <footer>
   <div class="wrap">
-    Built with Apache Jena, HermiT, rdflib, SHACL, and D3 —
-    <a href="https://github.com/kingl0w/tdy-parts-knowledge-graph">source on GitHub</a>.
+    Built with Apache Jena, HermiT, rdflib, SHACL, and D3.
+    <a href="https://github.com/kingl0w/tdy-parts-knowledge-graph">Source on GitHub</a>.
     Visualizations fall back to a committed data snapshot when the live endpoint isn't reachable.
   </div>
 </footer>
@@ -292,7 +292,7 @@ fetch("viz/data.json").then(r => r.json()).then(json => {
   const fits = edges.filter(e => e.rel === "fitsWith").length;
   const compat = edges.length - fits;
   document.getElementById("stats").innerHTML =
-    `<b>${nodes.length}</b> parts &middot; <b>${fits}</b> rule-derived fits &middot; <b>${compat}</b> OWL-inferred &mdash; all computed, none stored`;
+    `<b>${nodes.length}</b> parts &middot; <b>${fits}</b> rule-derived fits &middot; <b>${compat}</b> OWL-inferred &middot; all computed, none stored`;
 
   // radial layout
   const R = 200, cats = [...new Set(nodes.map(n => n.type))], GAP = 1.5;

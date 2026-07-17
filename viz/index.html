@@ -77,7 +77,7 @@ async function load() {
       const res = await fetch("data.json");
       if (!res.ok) throw new Error();
       json = await res.json();
-      note = "live endpoint unreachable — showing snapshot data";
+      note = "live endpoint unreachable, showing snapshot data";
     } catch {
       status.textContent = "error: " + e.message + " (is the container running? docker compose up -d)";
       return;

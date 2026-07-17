@@ -62,7 +62,7 @@ const TYPE_COLORS = {
 const EDGE_COLORS = { compatibleWith: "#a3be8c", fitsWith: "#ebcb8b" };
 const CAT_ORDER = ["CPU", "Motherboard", "RAM", "GPU", "Storage", "PSU", "Case", "Build", "Listing", "GradedListing", "Other"];
 
-// why a fitsWith edge exists, by category pair — mirrors rules/*.rq
+// why a fitsWith edge exists, by category pair; mirrors rules/*.rq
 const RULES = {
   "CPU|Motherboard": "socket match",
   "Motherboard|RAM": "RAM generation match",
@@ -118,7 +118,7 @@ async function load() {
       const res = await fetch("data.json");
       if (!res.ok) throw new Error();
       json = await res.json();
-      note = "live endpoint unreachable — showing snapshot data";
+      note = "live endpoint unreachable, showing snapshot data";
     } catch {
       status.textContent = "error: " + e.message + " (is the container running? docker compose up -d)";
       return;
@@ -264,7 +264,7 @@ function draw() {
       refresh(d);
       const items = adj.get(d.id).map(e => {
         const other = e.a.id === d.id ? e.b : e.a;
-        return `<div><i class="dot" style="background:${TYPE_COLORS[other.type]}"></i>${short(other.id)} <span style="color:#6b7280">— ${why(e.rel, d.type, other.type)}</span></div>`;
+        return `<div><i class="dot" style="background:${TYPE_COLORS[other.type]}"></i>${short(other.id)} <span style="color:#6b7280">${why(e.rel, d.type, other.type)}</span></div>`;
       }).join("") || '<div style="color:#6b7280">no compatibility edges</div>';
       tip.innerHTML = `<b>${short(d.id)}</b> <span style="color:#6b7280">(${d.type})</span>${items}`;
       tip.style.display = "block";
@@ -290,7 +290,7 @@ function renderTray() {
 
   const slots = coreCats.map(c => {
     const parts = sel.filter(n => n.type === c).map(n => short(n.id)).join(", ");
-    return `<div class="slot"><b>${c}:</b> ${parts || '<span class="empty">— empty</span>'}</div>`;
+    return `<div class="slot"><b>${c}:</b> ${parts || '<span class="empty">empty</span>'}</div>`;
   }).join("");
 
   const checks = [];
